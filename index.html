@@ -74,8 +74,38 @@
     font-size: 40px;
     display: inline-block;
     animation: bounce 1s infinite;
+    
   }
     </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-rCpLDEr6SITd9VVb3jZcxMT1A3e56MmPGgBdoeSx6q8Acq+HTt8A03cFqM1DNRNf" crossorigin="anonymous">
+<style>
+  /* Add your styles for the button here */
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px; /* Adjusted to move the button to the left */
+    background-color: #25d366; /* WhatsApp green */
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    animation: float 1.5s ease-in-out infinite; /* Floating animation */
+
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+</style>
 </head>
 
   
@@ -123,7 +153,7 @@
           <li><a href="#contact">Contact Us</a></li>
           <li>
             <div class="col-md-2 info">
-              <p><a href="https://wa.me/2500788940718" target="_blank" style="font-size: 40px;" class="whatsapp-link"><ion-icon name="logo-whatsapp"></ion-icon></a></p>
+              <p><a href="https://wa.me/2500788940718" target="_blank" style="font-size: 40px;color: #25d366;" class="whatsapp-link"><ion-icon name="logo-whatsapp"></ion-icon></a></p>
             </div>
           </li>
         </ul>
@@ -139,7 +169,7 @@
     <div class="container">
 
       <div class="intro-img">
-        <img src="img/all/32.jpg" style="height: 300px;width: 80%;border-radius: 6%;opacity:0.9" alt="" class="img-fluid">
+        <img src="img/all/32.jpg" style="height: 300px;width: 100%;border-radius: 6%;opacity:0.9" alt="" class="img-fluid">
       </div>
 
       <div class="intro-info">
@@ -247,13 +277,13 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
           </div>
 
           <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-              <img src="img/all/39.jpg" style="height: 480px;width: 80%;border-radius: 6%;opacity:1" class="img-fluid" alt="About Us Image">
+              <img src="img/all/39.jpg" style="height: 480px;width: 100%;border-radius: 6%;opacity:1" class="img-fluid" alt="About Us Image">
           </div>
       </div>
 
       <div class="row about-extra">
         <div class="col-lg-6 wow fadeInUp">
-            <img src="img/all/5.JPG" style="height: 300px;width: 80%;border-radius: 6%;opacity:0.9" class="img-fluid" alt="Extra Image 1">
+            <img src="img/all/5.JPG" style="height: 300px;width: 100%;border-radius: 6%;opacity:0.9" class="img-fluid" alt="Extra Image 1">
         </div>
         <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0" style="font-size: 13px;">
             <h4> <b>Our Values Drive Your Success at Seveeen Solutions</b></h4>
@@ -932,7 +962,7 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
           </div>
           <div class="col-md-2 info">
             <p><a href="https://wa.me/2500788940718" target="_blank" style="font-size: 40px; display: inline-block; position: relative;">
-              <ion-icon name="logo-whatsapp" style="animation: whatsappIcon 1s infinite;"></ion-icon>
+              <ion-icon name="logo-whatsapp" style="animation: whatsappIcon 1s infinite;color: #25d366;"></ion-icon>
             </a></p>
           </div>
           
@@ -1040,7 +1070,10 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
       </div>
     </div>
   </footer><!-- #footer -->
-  
+  <!-- WhatsApp button -->
+  <a href="https://wa.me/250788940718" target="_blank" class="whatsapp-button">
+    <ion-icon name="logo-whatsapp" style="animation: whatsappIcon 1s infinite;"></ion-icon>
+  </a>  
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
