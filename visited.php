@@ -91,7 +91,7 @@ $userVisits = $mainAction->fetchUserVisits();
     <tbody>
     <?php foreach ($userVisits as $index => $row): ?>
         <tr>
-            <td><?= count($userVisits) - $index ?></td>
+            <td><?= count($userVisits) - $index."." ?></td>
             <?php foreach ($row as $value): ?>
                 <td><?= $value ?></td>
             <?php endforeach; ?>
