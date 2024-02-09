@@ -1096,6 +1096,27 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+<script>
+window.onload = function() {
+    // Assuming the PHP file is named "record.php"
+    const phpUrl = 'main/action.php';
 
+    // Make the fetch request
+    fetch(phpUrl + '?record_visit=true')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            // Handle the response data as needed
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
+};
+</script>
 </body>
 </html>
