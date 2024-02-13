@@ -52,6 +52,7 @@
     </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
       /* @keyframes whatsappIcon {
   0% { transform: translateY(0); }
@@ -76,6 +77,26 @@
     animation: bounce 1s infinite;
     
   }
+
+
+  /* ======================== catalog */
+  .highlight-catalog {
+    background-color: hsl(230, 73%, 57%); /* Green background */
+    color: white!important; /* White text color */
+    padding: 5px; /* Add some padding for better visibility */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+/* html, body {
+    overflow: hidden;
+    margin: 0; 
+    padding: 0; 
+}
+
+#main-body {
+    overflow: hidden;
+} */
+
     </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-rCpLDEr6SITd9VVb3jZcxMT1A3e56MmPGgBdoeSx6q8Acq+HTt8A03cFqM1DNRNf" crossorigin="anonymous">
 <style>
@@ -121,42 +142,50 @@
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-        <a href="#intro" class="scrollto"><img src="img/seveeen.png" style="max-height: 65px;margin-top: -16px;" alt=""></a>
+        <a href="" class="scrollto"><img src="img/seveeen.png" style="max-height: 65px;margin-top: -16px;" alt=""></a>
         
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#intro">Home</a></li>
+          <li class="active"><a href="">Home</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
-          <li class="drop-down"><a href="#">Services</a>
-            <ul>
-                <li><a href="#portfolio">Web Development</a></li>
-                <li class="drop-down"><a href="#portfolio">App Development</a>
-                    <ul>
-                        <li><a href="#portfolio">Android Apps</a></li>
-                        <li><a href="#portfolio">iOS Apps</a></li>
-                        <li><a href="#portfolio">Cross-platform Apps</a></li>
-                        <li><a href="#portfolio">Custom Solutions</a></li>
-                        <li><a href="#portfolio">App Maintenance</a></li>
-                    </ul>
-                </li>
-                <li><a href="#portfolio">Design Services</a></li>
-                <li><a href="#portfolio">Consulting</a></li>
-                <li><a href="#portfolio">Support & Maintenance</a></li>
-            </ul>
+          <li class="drop-down">
+              <a href="#">Our Solutions</a>
+              <ul>
+                  <li><a href="#portfolio">Web Development</a></li>
+                  <li class="drop-down">
+                      <a href="#portfolio">App Development</a>
+                      <ul>
+                          <li><a href="#portfolio">Android Apps</a></li>
+                          <li><a href="#portfolio">iOS Apps</a></li>
+                          <li><a href="#portfolio">Cross-platform Apps</a></li>
+                          <li><a href="#portfolio">Custom Solutions</a></li>
+                          <li><a href="#portfolio">App Maintenance</a></li>
+                      </ul>
+                  </li>
+                  <li><a href="#portfolio">Design Services</a></li>
+                  <li><a href="#portfolio">Consulting</a></li>
+                  <li><a href="#portfolio">Support & Maintenance</a></li>
+              </ul>
+          </li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li class="highlight-catalog">
+            <a href="javascript:void(0);" style="color: #fff!important;"><b>Explore Our Catalog</b></a>
         </li>
         
-          <li><a href="#contact">Contact Us</a></li>
           <li>
-            <div class="col-md-2 info">
-              <p><a href="https://wa.me/2500788940718" target="_blank" style="font-size: 40px;color: #25d366;" class="whatsapp-link"><ion-icon name="logo-whatsapp"></ion-icon></a></p>
-            </div>
+              <div class="col-md-2 info">
+                  <p><a href="https://wa.me/2500788940718" target="_blank" style="font-size: 40px;color: #25d366;" class="whatsapp-link">
+                          <ion-icon name="logo-whatsapp"></ion-icon>
+                      </a></p>
+              </div>
           </li>
-        </ul>
+      </ul>
+      
       </nav><!-- .main-nav -->
       
     </div>
@@ -165,6 +194,7 @@
   <!--==========================
     Intro Section
   ============================-->
+<div id="main-body">
   <section id="intro" class="clearfix">
     <div class="container">
 
@@ -854,19 +884,25 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
-          <img src="img/all/egura.png" class="img-fluid" alt="Client 1 Logo">
+          <a href="http://egura.rw/" target="_blank">
+            <img src="img/all/egura.png" class="img-fluid" alt="Client 1 Logo">
+          </a>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
+          <a href="https://abyride.com/">
           <img src="img/all/abyride.png" class="img-fluid" alt="Client 2 Logo">
+          </a>
         </div>
       </div>
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
+          <a href="https://bluehousefitness.site/">
           <img src="img/all/bluehousefitness.jpg" class="img-fluid" alt="Client 3 Logo">
+          </a>
         </div>
       </div>
 
@@ -884,7 +920,9 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
 
       <div class="col-lg-3 col-md-4 col-xs-6">
         <div class="client-logo">
+          <a href="https://www.easyhealth.com/">
           <img src="img/all/easyhealth.jpg" class="img-fluid" alt="Client 6 Logo">
+          </a>
         </div>
       </div>
 
@@ -1004,6 +1042,7 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
 
 
   </main>
+</div>
 
   <!--==========================
     Footer
@@ -1022,8 +1061,8 @@ Discover how we can tailor these services to meet your unique needs. Visit us at
             <h4>Useful Links</h4>
             <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#services">Services</a></li>
               <li><a href="#">Terms of service</a></li>
               <li><a href="#">Privacy policy</a></li>
             </ul>
@@ -1117,6 +1156,128 @@ window.onload = function() {
             console.error('Fetch error:', error);
         });
 };
+
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var originalContent; // Variable to store the original content
+
+  function loadCatalog() {
+      // Ensure the element with the ID 'main-body' exists
+      var mainBody = document.getElementById('main-body');
+
+      if (mainBody) {
+          // Store the original content before removing it
+          originalContent = mainBody.innerHTML;
+
+          // Remove all body contents
+          mainBody.innerHTML = '';
+
+          // Create an iframe to load the catalog/index.html
+          var iframe = document.createElement('iframe');
+          iframe.src = 'catalog/index.html';
+          iframe.style.width = '100%';
+          iframe.style.height = '100%'; // Set iframe height to 100%
+          iframe.style.border = 'none'; // Remove iframe border
+          iframe.scrolling = 'no'; // Prevent scrollbars
+
+          // Append the iframe to the body
+          mainBody.appendChild(iframe);
+
+          // Set the main-body height after the iframe has loaded
+          iframe.onload = function() {
+              adjustIframeHeight();
+              // Attach event handlers for navigation links
+              attachNavEventHandlers();
+          };
+      } else {
+          console.error("Element with ID 'main-body' not found");
+      }
+  }
+
+  function restoreOriginalContent() {
+      var mainBody = document.getElementById('main-body');
+
+      if (mainBody && originalContent) {
+          // Restore the original content
+          mainBody.innerHTML = originalContent;
+
+          // Attach event handler for the 'Explore Our Catalog' button
+          document.querySelector('.highlight-catalog a').addEventListener('click', loadCatalog);
+
+          // Attach event handlers for navigation links
+          attachNavEventHandlers();
+      }
+  }
+
+  function adjustIframeHeight() {
+      var iframe = document.querySelector('iframe');
+      if (iframe) {
+          iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+      }
+  }
+
+  function attachNavEventHandlers() {
+      // Attach event handlers for navigation links using event delegation
+      document.querySelector('.main-nav').addEventListener('click', function(event) {
+          var target = event.target;
+
+          // Check if the clicked element is a navigation link
+          if (target.tagName === 'A') {
+              // Prevent the default behavior of the anchor tag
+              event.preventDefault();
+
+              // Restore the original content when certain menus are clicked
+              restoreOriginalContent();
+
+              // Your navigation logic here (e.g., scrolling to the target section)
+              var targetHref = target.getAttribute('href');
+
+              if (targetHref.startsWith('#')) {
+                  var targetId = targetHref.substring(1);
+                  var targetElement = document.getElementById(targetId);
+
+                  if (targetElement) {
+                      // Use smooth scrolling to the target element
+                      targetElement.scrollIntoView({ behavior: 'smooth' });
+                  }
+              }
+
+              // Adjust iframe height after content is loaded
+              adjustIframeHeight();
+
+              // If you want to close the mobile menu after clicking a link (for responsive design)
+              // You can add a class to the navigation container to hide it
+              // Example: document.querySelector('.main-nav').classList.remove('active');
+          }
+      });
+  }
+
+  // Attach event handler for the 'Explore Our Catalog' button
+  document.querySelector('.highlight-catalog a').addEventListener('click', loadCatalog);
+
+  // Attach initial event handlers for navigation links
+  attachNavEventHandlers();
+</script>
+
+
+
 </body>
 </html>
