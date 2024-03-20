@@ -69,52 +69,14 @@ class MainAction extends DBConnect
     }
 }
 
+
 $user_ip = $_SERVER['REMOTE_ADDR'];
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-$referral_source = $_GET['referral_source'] ?? null;
+$referral_source = isset($_SERVER['HTTP_REFERER']) ? parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) : 'Direct'; // Extract domain from referral URL
 $landing_page = $_SERVER['REQUEST_URI'];
-$browser = $_GET['browser'] ?? null;
-$operating_system = $_GET['operating_system'] ?? null;
-$device_type = $_GET['device_type'] ?? null;
-$screen_resolution = $_GET['screen_resolution'] ?? null;
-$language = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? null;
-$visit_timestamp = date('Y-m-d H:i:s');
 
-// Fetch additional information from IP-API
-$api_url = "http://ip-api.com/json/{$user_ip}";
-$api_response = file_get_contents($api_url);
-
-if ($api_response === FALSE) {
-    die("Failed to fetch data from the IP-API.");
-}
-
-$api_data = json_decode($api_response, true);
-
-// Extract relevant data from the API response
-$country = $api_data['country'] ?? 'Unknown';
-$city = $api_data['city'] ?? 'Unknown';
-$isp = $api_data['isp'] ?? 'Unknown';
-$continent = $api_data['continent'] ?? 'Unknown';
-$continentCode = $api_data['continentCode'] ?? 'Unknown';
-$region = $api_data['region'] ?? 'Unknown';
-$regionName = $api_data['regionName'] ?? 'Unknown';
-$district = $api_data['district'] ?? '';
-$zip = $api_data['zip'] ?? '';
-$lat = $api_data['lat'] ?? 0.0;
-$lon = $api_data['lon'] ?? 0.0;
-$timezone = $api_data['timezone'] ?? 'Unknown';
-$offset = $api_data['offset'] ?? 0;
-$currency = $api_data['currency'] ?? 'Unknown';
-$isp_new = $api_data['isp'] ?? 'Unknown';
-$org = $api_data['org'] ?? 'Unknown';
-$asNumber = $api_data['as'] ?? 'Unknown';
-$asName = $api_data['asname'] ?? 'Unknown';
-$mobile = $api_data['mobile'] ?? false;
-$proxy = $api_data['proxy'] ?? false;
-$hosting = $api_data['hosting'] ?? false;
-
-if (isset($_GET['record_visit'])) {
-    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+// Fetching browser, operating system, and device type
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
 
 // Check for common operating systems
 if (strpos($userAgent, 'Windows') !== false) {
@@ -126,20 +88,22 @@ if (strpos($userAgent, 'Windows') !== false) {
 } else {
     $os = 'Unknown';
 }
+
 // Check for common browsers
 if (strpos($userAgent, 'MSIE') !== false || strpos($userAgent, 'Trident') !== false) {
-    $browserr = 'Internet Explorer';
+    $browser = 'Internet Explorer';
 } elseif (strpos($userAgent, 'Firefox') !== false) {
-    $browserr = 'Firefox';
+    $browser = 'Firefox';
 } elseif (strpos($userAgent, 'Chrome') !== false) {
-    $browserr = 'Google Chrome';
+    $browser = 'Google Chrome';
 } elseif (strpos($userAgent, 'Safari') !== false) {
-    $browserr = 'Safari';
+    $browser = 'Safari';
 } elseif (strpos($userAgent, 'Opera') !== false || strpos($userAgent, 'OPR') !== false) {
-    $browserr = 'Opera';
+    $browser = 'Opera';
 } else {
-    $browserr = 'Unknown';
+    $browser = 'Unknown';
 }
+
 // Check for common device types
 if (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== false || strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== false) {
     $deviceType = 'Mobile';
@@ -148,18 +112,50 @@ if (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Android') !== 
 } else {
     $deviceType = 'Desktop';
 }
-// Check if the referral source is set
-if (isset($_SERVER['HTTP_REFERER'])) {
-    $referralSource = $_SERVER['HTTP_REFERER'];
-} else {
-    $referralSource = " - ";
-}
+
+// Additional information about the user visit
+$screen_resolution = $_GET['screen_resolution'] ?? null;
+$language = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? null;
+$visit_timestamp = date('Y-m-d H:i:s');
+
+// Fetch additional information from IP-API
+$api_url = "http://ip-api.com/json/{$user_ip}";
+$api_response = file_get_contents($api_url);
+
+if ($api_response !== false) {
+    $api_data = json_decode($api_response, true);
+
+    // Extract relevant data from the API response
+    $country = $api_data['country'] ?? 'Unknown';
+    $city = $api_data['city'] ?? 'Unknown';
+    $isp = $api_data['isp'] ?? 'Unknown';
+    $continent = $api_data['continent'] ?? 'Unknown';
+    $continentCode = $api_data['continentCode'] ?? 'Unknown';
+    $region = $api_data['region'] ?? 'Unknown';
+    $regionName = $api_data['regionName'] ?? 'Unknown';
+    $district = $api_data['district'] ?? '';
+    $zip = $api_data['zip'] ?? '';
+    $lat = $api_data['lat'] ?? 0.0;
+    $lon = $api_data['lon'] ?? 0.0;
+    $timezone = $api_data['timezone'] ?? 'Unknown';
+    $offset = $api_data['offset'] ?? 0;
+    $currency = $api_data['currency'] ?? 'Unknown';
+    $isp_new = $api_data['isp'] ?? 'Unknown';
+    $org = $api_data['org'] ?? 'Unknown';
+    $asNumber = $api_data['as'] ?? 'Unknown';
+    $asName = $api_data['asname'] ?? 'Unknown';
+    $mobile = $api_data['mobile'] ?? false;
+    $proxy = $api_data['proxy'] ?? false;
+    $hosting = $api_data['hosting'] ?? false;
+
     $mainAction = new MainAction();
     $mainAction->saveUserVisit(
-        $user_ip, $user_agent, $referralSource, $landing_page, $browserr, $os, $deviceType,
+        $user_ip, $user_agent, $referral_source, $landing_page, $browser, $os, $deviceType,
         $screen_resolution, $language, $country, $city, $isp, $continent, $continentCode, $region, $regionName,
         $district, $zip, $lat, $lon, $timezone, $offset, $currency,
         $isp_new, $org, $asNumber, $asName, $mobile, $proxy, $hosting, $visit_timestamp
     );
+} else {
+    die("Failed to fetch data from the IP-API.");
 }
 ?>
